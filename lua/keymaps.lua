@@ -18,12 +18,6 @@ wk.register({
   x = { ":vsplit<CR>", "Vertical Split" },
 }, { prefix = "<leader>" })
 
--- UFO
-wk.register({
-  zR = { require('ufo').openAllFolds, "Open All Folds" },
-  zM = { require('ufo').closeAllFolds, "Close All Folds" },
-})
-
 -- Quick stuff
 wk.register({
   ["<C-s>"] = { ":w<CR>", "Save" },

@@ -111,15 +111,11 @@ require("lazy").setup({
     },
 
     {
-        'kevinhwang91/nvim-ufo',
-        dependencies = {'kevinhwang91/promise-async'},
+        'anuvyklack/pretty-fold.nvim',
         config = function()
-            require('ufo').setup({
-                provider_selector = function(bufnr, filetype, buftype)
-                    return {'treesitter', 'indent'}
-                end
-            })
-        end
+            require('pretty-fold').setup()
+        end,
+        lazy = false
     },
 
     {
@@ -146,6 +142,14 @@ require("lazy").setup({
             vim.o.timeoutlen = 300
         end,
         opts = {},
+    },
+
+    {
+        "stevearc/conform.nvim",
+        event = 'BufWritePre',
+        config = function()
+            require ("config.conform")
+        end
     },
 
 })
