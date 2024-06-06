@@ -8,9 +8,11 @@ require('mason').setup({
     }
 })
 
+local servers = { 'lua_ls', 'rust_analyzer', 'tsserver' }
+
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
-    ensure_installed = { 'lua_ls', 'rust_analyzer' },
+    ensure_installed = servers,
 })
 
 -- Set different settings for different languages' LSP
@@ -60,3 +62,8 @@ end
 -- 1. use `:Mason` to install corresponding LSP
 -- 2. add configuration below
 
+for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+        on_attach = on_attach,
+    }
+end
