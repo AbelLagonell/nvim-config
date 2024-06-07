@@ -71,6 +71,7 @@ require("lazy").setup({
         end
     },
 
+    --Tabs
     {
         'akinsho/bufferline.nvim',
         lazy = false,
@@ -78,10 +79,13 @@ require("lazy").setup({
             'nvim-tree/nvim-web-devicons'
         },
         config = function()
-            require("bufferline").setup()
+            require("config.bufferline")
         end
     },
 
+    "tiagovla/scope.nvim",
+
+    --Pairing
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -110,6 +114,7 @@ require("lazy").setup({
         end
     },
 
+    --Folding
     {
         'anuvyklack/pretty-fold.nvim',
         config = function()
@@ -118,23 +123,27 @@ require("lazy").setup({
         lazy = false
     },
 
+    --Terminal
     {
         'akinsho/toggleterm.nvim',
         version = "*",
         config = true
     },
 
+    --Commenting
     {
         'numToStr/Comment.nvim',
         lazy = false,
     },
 
+    --Looking for files
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.6',
         dependencies = { 'nvim-lua/plenary.nvim' }
     },
 
+    --Remembering the keybinds
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -145,6 +154,7 @@ require("lazy").setup({
         opts = {},
     },
 
+    --Auto Format
     {
         "stevearc/conform.nvim",
         event = 'BufWritePre',
@@ -153,6 +163,7 @@ require("lazy").setup({
         end
     },
 
+    --GIT
     {
         "lewis6991/gitsigns.nvim",
         event = "User Filepost",
@@ -162,6 +173,7 @@ require("lazy").setup({
         end
     },
 
+    --Colors
     {
         'norcalli/nvim-colorizer.lua',
         config = function()
@@ -169,6 +181,7 @@ require("lazy").setup({
         end
     },
 
+    --Icons
     {
         'nvim-tree/nvim-web-devicons',
         config = function()
@@ -176,6 +189,7 @@ require("lazy").setup({
         end
     },
 
+    --Line for indentation
     { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} }
 
 })
