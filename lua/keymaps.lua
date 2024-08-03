@@ -5,64 +5,57 @@ local opts = {
 }
 
 local wk = require("which-key")
-
--- Terminal
-wk.register({
-    v = { ":ToggleTerm size=80 direction=vertical<CR>", "Vertical Terminal" },
-    h = { ":ToggleTerm size=20 direction=horizontal<CR>", "Horizontal Terminal" },
-}, { prefix = "<leader>" })
-
--- Splitting
-wk.register({
-    z = { ":split<CR>", "Horizontal Split" },
-    x = { ":vsplit<CR>", "Vertical Split" },
-}, { prefix = "<leader>" })
-
--- Quick stuff
-wk.register({
-    ["<C-s>"] = { ":w<CR>", "Save" },
-    ["<C-q>"] = { ":q<CR>", "Quit" },
-})
-
--- Better window navigation
-wk.register({
-    ["<C-h>"] = { "<C-w>h", "Move Left" },
-    ["<C-j>"] = { "<C-w>j", "Move Down" },
-    ["<C-k>"] = { "<C-w>k", "Move Up" },
-    ["<C-l>"] = { "<C-w>l", "Move Right" },
-})
-
--- Resize with arrows
-wk.register({
-    ["<C-Up>"] = { ":resize -2<CR>", "Resize Up" },
-    ["<C-Down>"] = { ":resize +2<CR>", "Resize Down" },
-    ["<C-Left>"] = { ":vertical resize -2<CR>", "Resize Left" },
-    ["<C-Right>"] = { ":vertical resize +2<CR>", "Resize Right" },
-})
-
--- Visual mode
-wk.register({
-    ["<"] = { "<gv", "Indent Left" },
-    [">"] = { ">gv", "Indent Right" },
-}, { mode = "v" })
-
--- File Explorer
-wk.register({
-    a = { ":NvimTreeOpen<CR>", "Open File Explorer" },
-    s = { ":NvimTreeToggle<CR>", "Toggle File Explorer" },
-}, { prefix = "<leader>" })
-
--- Telescope
 local builtin = require('telescope.builtin')
-wk.register({
-    ff = { builtin.find_files, "Find Files" },
-    fg = { builtin.live_grep, "Live Grep" },
-    fb = { builtin.buffers, "Buffers" },
-    fh = { builtin.help_tags, "Help Tags" },
-}, { prefix = "<leader>" })
 
--- Tabs
-wk.register({
-    ["<Tab>"] = { ':bnext<CR>', "Next Tab" },
-    ["<S-Tab>"] = { ':bprevious<CR>', 'Previous Tab' }
-}, { mode = "n" })
+wk.add({
+    -- Terminal
+    { "<leader>h", ":ToggleTerm size=20 direction=horizontal<CR>", desc = "Horizontal Terminal" },
+    { "<leader>v", ":ToggleTerm size=80 direction=vertical<CR>",   desc = "Vertical Terminal" },
+
+
+    -- Splitting
+    { "<leader>x", ":vsplit<CR>",                                  desc = "Vertical Split" },
+    { "<leader>z", ":split<CR>",                                   desc = "Horizontal Split" },
+
+    -- Quick stuff
+    { "<C-q>",     ":q<CR>",                                       desc = "Quit" },
+    { "<C-s>",     ":w<CR>",                                       desc = "Save" },
+
+    -- Better window navigation
+    { "<C-h>",     "<C-w>h",                                       desc = "Move Left" },
+    { "<C-j>",     "<C-w>j",                                       desc = "Move Down" },
+    { "<C-k>",     "<C-w>k",                                       desc = "Move Up" },
+    { "<C-l>",     "<C-w>l",                                       desc = "Move Right" },
+
+
+    -- Resize with arrows
+    { "<C-Down>",  ":resize +2<CR>",                               desc = "Resize Down" },
+    { "<C-Left>",  ":vertical resize -2<CR>",                      desc = "Resize Left" },
+    { "<C-Right>", ":vertical resize +2<CR>",                      desc = "Resize Right" },
+    { "<C-Up>",    ":resize -2<CR>",                               desc = "Resize Up" },
+
+    -- File Explorer
+    { "<leader>a", ":NvimTreeOpen<CR>",                            desc = "Open File Explorer" },
+    { "<leader>s", ":NvimTreeToggle<CR>",                          desc = "Toggle File Explorer" },
+
+    -- Telescope
+    {
+        { "<leader>f",  group = "file" },
+        { "<leader>fb", builtin.find_files, desc = "Buffers" },
+        { "<leader>ff", builtin.live_grep,  desc = "Find Files" },
+        { "<leader>fg", builtin.buffers,    desc = "Live Grep" },
+        { "<leader>fh", builtin.help_tags,  desc = "Help Tags" },
+    },
+
+    --Tabs
+    { "<S-Tab>", ":bprevious<CR>", desc = "Previous Tab" },
+    { "<Tab>",   ":bnext<CR>",     desc = "Next Tab" },
+
+    --Visual Mode
+    {
+        mode = { "v" },
+        { "<", "<gv", desc = "Indent Left" },
+        { ">", ">gv", desc = "Indent Right" },
+
+    }
+})

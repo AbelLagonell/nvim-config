@@ -76,7 +76,8 @@ require("lazy").setup({
         'akinsho/bufferline.nvim',
         lazy = false,
         dependencies = {
-            'nvim-tree/nvim-web-devicons'
+            'nvim-tree/nvim-web-devicons',
+            "echasnovski/mini.nvim",
         },
         config = function()
             require("config.bufferline")
@@ -190,6 +191,11 @@ require("lazy").setup({
         config = function()
             require('config.web-devicons')
         end
+    },
+
+    {
+        "echasnovski/mini.nvim",
+        version = false,
     },
 
     --Line for indentation
