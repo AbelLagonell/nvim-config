@@ -41,9 +41,9 @@ wk.add({
     -- Telescope
     {
         { "<leader>f",  group = "file" },
-        { "<leader>fb", builtin.find_files, desc = "Buffers" },
-        { "<leader>ff", builtin.live_grep,  desc = "Find Files" },
-        { "<leader>fg", builtin.buffers,    desc = "Live Grep" },
+        { "<leader>fb", builtin.buffers,    desc = "Buffers" },
+        { "<leader>ff", builtin.find_files, desc = "Find Files" },
+        { "<leader>fg", builtin.live_grep,  desc = "Live Grep" },
         { "<leader>fh", builtin.help_tags,  desc = "Help Tags" },
     },
 
