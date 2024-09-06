@@ -21,6 +21,7 @@ require('mason-lspconfig').setup({
 --     - the settings table is sent to the LSP
 --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
 local lspconfig = require('lspconfig')
+local pid = vim.fn.getpid()
 
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -63,6 +64,12 @@ end
 -- 2. add configuration below
 
 for _, lsp in ipairs(servers) do
+    if lsp == 'omnisharp_mono' then
+        lspconfig['omnisharp_mono'].setup({
+            cmd = { "omnisharp-mono", "--languageserver", "--hostPID", tostring(pid) }
+        })
+    end
+
     lspconfig[lsp].setup {
         on_attach = on_attach,
     }
