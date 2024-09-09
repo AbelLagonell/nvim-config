@@ -8,7 +8,8 @@ require('mason').setup({
     }
 })
 
-local servers = { 'lua_ls', 'rust_analyzer', 'tsserver', 'astro', 'tailwindcss', 'pyright', 'omnisharp_mono' }
+local servers = { 'lua_ls', 'rust_analyzer', 'tsserver', 'astro', 'tailwindcss', 'pyright', 'omnisharp_mono', 'clangd',
+    'clangd_format' }
 
 require('mason-lspconfig').setup({
     -- A list of servers to automatically install if they're not already installed
